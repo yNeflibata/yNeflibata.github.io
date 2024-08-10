@@ -11,7 +11,6 @@ $.ajax({
         ipLoacation = res;
     }
 })
-
 function getDistance(e1, n1, e2, n2) {
     const R = 6371
     const { sin, cos, asin, PI, hypot } = Math
@@ -29,29 +28,36 @@ function getDistance(e1, n1, e2, n2) {
 }
 
 function showWelcome() {
-    let dist = getDistance(115, 31, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
+
+    let dist = getDistance(113.34499552, 23.15537143, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
     //根据国家、省份、城市信息自定义欢迎语
     switch (ipLoacation.result.ad_info.nation) {
         case "日本":
-            posdesc = "Ciallo!";
+            posdesc = "よろしく，一起去看樱花吗";
             break;
         case "美国":
-            posdesc = "Hello?";
+            posdesc = "Let us live in peace!";
             break;
         case "英国":
-            posdesc = "Hello?";
+            posdesc = "想同你一起夜乘伦敦眼";
             break;
         case "俄罗斯":
-            posdesc = "Ваше здоровье!";
+            posdesc = "干了这瓶伏特加！";
             break;
         case "法国":
-            posdesc = "Bonjour!";
+            posdesc = "C'est La Vie";
             break;
         case "德国":
-            posdesc = "ciao!";
+            posdesc = "Die Zeit verging im Fluge.";
+            break;
+        case "澳大利亚":
+            posdesc = "一起去大堡礁吧！";
+            break;
+        case "加拿大":
+            posdesc = "拾起一片枫叶赠予你";
             break;
         case "中国":
             pos = ipLoacation.result.ad_info.province + " " + ipLoacation.result.ad_info.city + " " + ipLoacation.result.ad_info.district;
@@ -191,34 +197,29 @@ function showWelcome() {
             }
             break;
         default:
-            posdesc = "Ciallo!";
+            posdesc = "带我去你的国家逛逛吧。";
             break;
     }
 
     //根据本地时间切换欢迎语
     let timeChange;
     let date = new Date();
-    if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>上午好</span>，早起的虫儿被鸟儿吃！";
-    else if (date.getHours() >= 11 && date.getHours() < 13) timeChange = "<span>中午好</span>，开锅了干饭了!";
-    else if (date.getHours() >= 13 && date.getHours() < 15) timeChange = "<span>下午好</span>，没福也要硬享！";
-    else if (date.getHours() >= 15 && date.getHours() < 16) timeChange = "<span>三点几啦</span>，品茶！";
+    if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>上午好</span>，一日之计在于晨！";
+    else if (date.getHours() >= 11 && date.getHours() < 13) timeChange = "<span>中午好</span>，该摸鱼吃午饭了。";
+    else if (date.getHours() >= 13 && date.getHours() < 15) timeChange = "<span>下午好</span>，懒懒地睡个午觉吧！";
+    else if (date.getHours() >= 15 && date.getHours() < 16) timeChange = "<span>三点几啦</span>，一起饮茶呀！";
     else if (date.getHours() >= 16 && date.getHours() < 19) timeChange = "<span>夕阳无限好！</span>";
-    else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>晚上好</span>，天黑请闭眼！";
-    else timeChange = "夜深了，注意身体!";
+    else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>晚上好</span>，夜生活嗨起来！";
+    else timeChange = "夜深了，早点休息，少熬夜。";
 
     try {
         //自定义文本和需要放的位置
-        let html = `<b><center>🎉 Ciallo 🎉</center>&emsp;&emsp;`
-        html += `欢迎来自 <span style="color:#cb4c46">${pos}</span> 的小伙伴,`
-        html += `${posdesc} ${timeChange}`
-        html += `<center>天涯: <span style="color:#ef50a8">${dist}</span> km </center>`
-        html += `<center>海角: <span style="color:#2d80c2">${ip}</span> ip </center>`
-        html += `</b>`
-        document.getElementById("welcome-info").innerHTML = html
+        document.getElementById("welcome-info").innerHTML =
+            `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离站长约 <span style="color:var(--theme-color)">${dist}</span> 公里，当前的IP地址为： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
 }
 window.onload = showWelcome;
 // 如果使用了pjax在加上下面这行代码
-// document.addEventListener('pjax:complete', showWelcome);
+document.addEventListener('pjax:complete', showWelcome);
