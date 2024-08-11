@@ -25,3 +25,4 @@ function startSakura() {
 window.onresize = function () { var canvasSnow = document.getElementById('canvas_snow'); }
 img.onload = function () { startSakura(); }
 function stopp() { if (staticx) { var child = document.getElementById("canvas_sakura"); child.parentNode.removeChild(child); window.cancelAnimationFrame(stop); staticx = false; } else { startSakura(); } }
+
