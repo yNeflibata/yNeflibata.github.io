@@ -3,7 +3,7 @@ $.ajax({
     type: 'get',
     url: 'https://apis.map.qq.com/ws/location/v1/ip',
     data: {
-        key: '5GNBZ-HPCCZ-E3VX3-ZO6GJ-H4422-K4FCZ',
+        key: 'GT6BZ-6CT6B-2IJUW-JHRKU-WH7IV-4SB26',
         output: 'jsonp',
     },
     dataType: 'jsonp',
@@ -215,7 +215,7 @@ function showWelcome() {
     try {
         //自定义文本和需要放的位置
         document.getElementById("welcome-info").innerHTML =
-            `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离站长约 <span style="color:var(--theme-color)">${dist}</span> 公里，当前的IP地址为： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
+            `<b><center>🎉 Welcome 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:#e7742c">${pos}</span> 的小伙伴，${timeChange}您现在距离站长约 <span style="color:#7fdb65">${dist}</span> 公里，当前的IP地址为： <span style="color:#7155b4">${ip}</span>， ${posdesc}</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
