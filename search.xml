@@ -4,7 +4,57 @@
   
     
     <entry>
-      <title>HEXO blog配置</title>
+      <title>Java 面向对象基础</title>
+      <link href="/2024/08/13/Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/"/>
+      <url>/2024/08/13/Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>类的组成是由属性和行为两部分组成</p><ul><li>属性：在类中通过成员变量来体现（类中方法外的变量）</li><li>行为：在类中通过成员方法来体现<br>类是对事物的一种描述，对象则为具体存在的事物</li></ul><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>一个java文件中可以定义多个class，但只能一个类是public修饰的，而且public修饰的类名必须和文件名相同（不建议一个文件定义多个class）</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> class 类名 &#123;</span><br><span class="line"><span class="comment">// 成员变量</span></span><br><span class="line">变量<span class="number">1</span>的数据类型 变量<span class="number">1</span>;</span><br><span class="line">变量<span class="number">2</span>的数据类型 变量<span class="number">2</span>;</span><br><span class="line">    <span class="comment">//成员变量完整定义格式</span></span><br><span class="line">    修饰符 数据类型 变量名称 = 初始化值;<span class="comment">//一般无需指定初始化值，存在默认值</span></span><br><span class="line">…</span><br><span class="line"><span class="comment">// 成员方法</span></span><br><span class="line">方法<span class="number">1</span>;</span><br><span class="line">方法<span class="number">2</span>;</span><br><span class="line">    <span class="comment">//构造器、代码块、内部类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="对象的使用"><a href="#对象的使用" class="headerlink" title="对象的使用"></a>对象的使用</h3><ul><li>创建对象的格式：<ul><li>类名 对象名 &#x3D; new 类名();</li></ul></li><li>调用成员的格式：<ul><li>对象名.成员变量</li><li>对象名.成员方法();</li></ul></li></ul><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>是面向对象三大特征之一（封装，继承，多态），<strong>对象代表什么，就得封装对应的数据，并提供数据对应的行为</strong></p><h3 id="private关键字"><a href="#private关键字" class="headerlink" title="private关键字"></a>private关键字</h3><p>private是一个修饰符，可以用来修饰成员（成员变量，成员方法）</p><ul><li>被private修饰的成员，只能在本类进行访问，针对private修饰的成员变量，如果需要被其他类使用，可以提供相应的操作<ul><li>提供“get变量名()”方法，用于获取成员变量的值，方法用public修饰</li><li>提供“set变量名(参数)”方法，用于设置成员变量的值，方法用public修饰</li></ul></li></ul><h3 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h3><ul><li>this修饰的变量用于指代成员变量，其主要作用是（区分局部变量和成员变量的重名问题）<ul><li>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量</li><li>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</li></ul></li><li>就近原则<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> claa Something&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        sout(age)  <span class="comment">//就近原则，打印结果为10</span></span><br><span class="line">        sout(<span class="built_in">this</span>.age) <span class="comment">//打印结果为null</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>-this关键字的使用<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>构造方法是一种特殊的方法，每创建一次对象，就会调用一次构造方法，由jvm调用，不能手动调用</p><ul><li>作用：创建对象   Student stu &#x3D; <strong>new Student();</strong></li><li>格式：方法名与类名相同，没有返回值类型，没有具体返回值<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class 类名&#123;</span><br><span class="line">​        修饰符 类名( 参数 ) &#123;</span><br><span class="line">​        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>功能：主要是完成对象数据的初始化</li><li>示例代码：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;无参构造方法&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li></ul><ul><li>构造方法的创建<br>如果没有定义构造方法，系统将给出一个默认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</li><li>构造方法的重载<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    学生类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;&#125; <span class="comment">//无参数构造方法，无论是否使用，推荐手工书写无参数构造方法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name,<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;,&quot;</span> + age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    测试类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//创建对象</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        s1.show();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public Student(String name)</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;林青霞&quot;</span>);</span><br><span class="line">        s2.show();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public Student(int age)</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">30</span>);</span><br><span class="line">        s3.show();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public Student(String name,int age)</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;林青霞&quot;</span>,<span class="number">30</span>);</span><br><span class="line">        s4.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="标准JavaBean"><a href="#标准JavaBean" class="headerlink" title="标准JavaBean"></a>标准JavaBean</h2><ul><li>类名需要见名知意</li><li>成员变量使用private修饰</li><li>提供至少两个构造方法 <ul><li>无参构造方法</li><li>带全部参数的构造方法</li></ul></li><li>get和set方法<br>​提供每一个成员变量对应的setXxx()&#x2F;getXxx()</li><li>如果还有其他行为，也需要写上</li></ul><h2 id="对象内存图"><a href="#对象内存图" class="headerlink" title="对象内存图"></a>对象内存图</h2><p><img src="/image/Java/7.png" alt="一个对象内存加载进程"><br><img src="/image/Java/8.png" alt="一个对象的内存图"><br>第二次创建同一种对象，class字节码不需要再加载，其已经存在方法区中</p><h2 id="this的内存原理"><a href="#this的内存原理" class="headerlink" title="this的内存原理"></a>this的内存原理</h2><p>this的本质：代表方法调用者的地址<br><img src="/image/Java/9.png" alt="this的内存原理"></p><h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><ul><li>类中位置不同：成员变量（类中方法外）局部变量（方法内部或方法声明上）</li><li>内存中位置不同：成员变量（堆内存）局部变量（栈内存）</li><li>生命周期不同：成员变量（随着对象的存在而存在，随着对象的消失而消失）局部变量（随着方法的调用而存在，醉着方法的调用完毕而消失）</li><li>初始化值不同：成员变量（有默认初始化值）局部变量（没有默认初始化值，必须先定义，赋值才能使用）</li><li>作用域不同： 成员变量在整个类中有效，局部变量在当前方法有效</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面相对象 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java 基础语法</title>
+      <link href="/2024/08/11/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"/>
+      <url>/2024/08/11/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="VScode-Java-environment-deploy"><a href="#VScode-Java-environment-deploy" class="headerlink" title="VScode Java environment deploy"></a>VScode Java environment deploy</h1><p>Download and insatll <a href="https://www.oracle.com/cn/java/technologies/downloads/">JDK</a>add <strong>bin</strong> to environment variable </p><p>Download <em>Extension Pack for Java</em> plug that include sie Extension Pack in VScode<br><a href="https://code.visualstudio.com/docs/java/java-tutorial">refer document</a></p><h1 id="Java-运行原理"><a href="#Java-运行原理" class="headerlink" title="Java 运行原理"></a>Java 运行原理</h1><p><img src="/image/Java/1.png" alt="alt text"></p><h1 id="Java-基础语法"><a href="#Java-基础语法" class="headerlink" title="Java 基础语法"></a>Java 基础语法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul><li>变量名不能重复</li><li>在一条语句中，可以定义多个变量。但是这种方式影响代码的阅读。</li><li>变量在使用之前必须要赋值。</li></ul><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本数据类型（4类8种）"><a href="#基本数据类型（4类8种）" class="headerlink" title="基本数据类型（4类8种）"></a>基本数据类型（4类8种）</h3><p>变量存储的是真实的数据，赋值给其他变量是真实的值</p><table><thead><tr><th align="center">数据类型</th><th align="center">关键字</th><th align="center">内存占用</th><th align="center">取值范围</th></tr></thead><tbody><tr><td align="center">整数</td><td align="center">byte</td><td align="center">1</td><td align="center">负的2的7次方 ~ 2的7次方-1(-128~127)</td></tr><tr><td align="center"></td><td align="center">short</td><td align="center">2</td><td align="center">负的2的15次方 ~ 2的15次方-1(-32768~32767)</td></tr><tr><td align="center"></td><td align="center">int(<strong>default</strong>)</td><td align="center">4</td><td align="center">负的2的31次方 ~ 2的31次方-1</td></tr><tr><td align="center"></td><td align="center">long</td><td align="center">8</td><td align="center">负的2的63次方 ~ 2的63次方-1</td></tr><tr><td align="center">浮点数</td><td align="center">float</td><td align="center">4</td><td align="center">1.401298e-45 ~ 3.402823e+38</td></tr><tr><td align="center"></td><td align="center">double(<strong>defalut</strong>)</td><td align="center">8</td><td align="center">4.9000000e-324 ~ 1.797693e+308</td></tr><tr><td align="center">字符</td><td align="center">char</td><td align="center">2</td><td align="center">0-65535</td></tr><tr><td align="center">布尔</td><td align="center">boolean</td><td align="center">1</td><td align="center">true，false</td></tr></tbody></table><h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>变量存储的是地址值，真实的数据在堆空间中，赋值给其他变量是地址值，多个变量指向同一个地址</p><h2 id="标识符规则"><a href="#标识符规则" class="headerlink" title="标识符规则"></a>标识符规则</h2><h3 id="必须"><a href="#必须" class="headerlink" title="必须"></a>必须</h3><ul><li>必须由数字、字母、下划线_、美元符号$组成。</li><li>数字不能开头</li><li>不能是关键字</li><li>区分大小写。</li></ul><h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><ul><li>变量名和方法名: 小驼峰命名法</li><li>类名: 大驼峰命名法</li></ul><h2 id="运算符和表达式"><a href="#运算符和表达式" class="headerlink" title="运算符和表达式"></a>运算符和表达式</h2><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul><li>算术运算符： + - * &#x2F; %</li><li>++  自增&#x2F;减运算符：++、– 。前缀：使用值之前增减，后缀：使用值之后增减。</li><li>赋值运算符: &#x3D;</li><li>扩展赋值运算符: +&#x3D;、-&#x3D;、*&#x3D;、&#x2F;&#x3D;、%&#x3D;,扩展的赋值运算符中隐层还包含了一个强制转换<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">byte</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"><span class="comment">// a += b;</span></span><br><span class="line">a = (<span class="type">byte</span>)(a+b);</span><br></pre></td></tr></table></figure></li><li>关系运算符： &#x3D;&#x3D;、!&#x3D;、&gt;、&lt;、&gt;&#x3D;、&lt;&#x3D;</li><li>逻辑运算符: &amp;、|、^、!</li><li>短路逻辑运算符: &amp;&amp;、||</li><li>三元运算符: 关系表达式 ？ 表达式1 ：表达式2 ；<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//关系表达式的值为真，那么执行表达式1,否则执行表达式2</span></span><br><span class="line">a &gt; b ? a : b;</span><br></pre></td></tr></table></figure></li></ul><h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><ul><li>用运算符把常量或者变量连接起来的，符合Java语法的式子就是表达式，表达式都有值</li></ul><h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h3><ul><li>取值范围小的，和取值范围大的进行运算，小的会先提升为大的，再进行运算。</li><li>byte、short、char三种类型的数据在运算的时候，都会直接先提升为int，然后再进行运算。（字符到计算机内置的ASCII码表中去查对应的数字，然后再进行计算）</li></ul><h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><ul><li>书写格式：目标数据类型 变量名 &#x3D; （目标数据类型）被强转的数据；</li><li>强制转换有可能会导致数据的精度丢失</li></ul><h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><h3 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h3><h3 id="if语句结构"><a href="#if语句结构" class="headerlink" title="if语句结构"></a>if语句结构</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">格式1：              </span><br><span class="line">if (关系表达式) &#123;</span><br><span class="line">    语句体;</span><br><span class="line">&#125;</span><br><span class="line">格式2：</span><br><span class="line">if (关系表达式) &#123;</span><br><span class="line">    语句体1;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    语句体2;</span><br><span class="line">&#125;</span><br><span class="line">格式3：</span><br><span class="line">if (关系表达式1) &#123;</span><br><span class="line">    语句体1;</span><br><span class="line">&#125; else if (关系表达式2) &#123;</span><br><span class="line">    语句体2;</span><br><span class="line">&#125; </span><br><span class="line">…</span><br><span class="line">else &#123;</span><br><span class="line">    语句体n+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="switch语句结构"><a href="#switch语句结构" class="headerlink" title="switch语句结构"></a>switch语句结构</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">switch (表达式) &#123;</span><br><span class="line">case 1:   // jdk12新特性：case 1 -&gt; &#123;&#125;，和带有break的效果一样，代码一行&#123;&#125;可以省略</span><br><span class="line">语句体1;</span><br><span class="line">break; //如果没有break会依次从匹配的case往下执行</span><br><span class="line">case 2:</span><br><span class="line">语句体2;</span><br><span class="line">break;</span><br><span class="line">...</span><br><span class="line">default: //如果所有的case都和表达式的值不匹配，就会执行default语句体部分，</span><br><span class="line">             default可以放在任意位置，也可以省略</span><br><span class="line">语句体n+1;</span><br><span class="line">break;</span><br><span class="line">&#125;           //可以用变量接收switch值 变量 = switch(表达式)</span><br></pre></td></tr></table></figure><h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><ul><li>for循环<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (初始化语句;条件判断语句;条件控制语句) &#123; </span><br><span class="line">循环体语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>while循环<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化语句;</span><br><span class="line">while(条件判断语句)&#123;</span><br><span class="line">循环体;</span><br><span class="line">条件控制语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>do…while循环<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化语句;</span><br><span class="line">do&#123;</span><br><span class="line">    循环体;</span><br><span class="line">    条件控制语句;</span><br><span class="line">&#125;while(条件判断语句);</span><br></pre></td></tr></table></figure></li></ul><h3 id="无限循环"><a href="#无限循环" class="headerlink" title="无限循环"></a>无限循环</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for(;;) &#123;&#125; //条件判断语句可以空着不写，如果不写，默认表示true，循环一直进行。</span><br><span class="line">while(true) &#123;&#125; //小括号里面就不能省略了，true一定要写出来，否则代码会报错,do while 相同</span><br><span class="line">do&#123;&#125; while(true);</span><br></pre></td></tr></table></figure><h3 id="条件控制语句"><a href="#条件控制语句" class="headerlink" title="条件控制语句"></a>条件控制语句</h3><ul><li>break:不能单独存在的。可以用在switch和循环中，表示结束，跳出的意思。</li><li>contiune:不能单独存在的。只能存在于循环当中。表示跳过本次循环，继续执行下次循环</li></ul><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="定义格式"><a href="#定义格式" class="headerlink" title="定义格式"></a>定义格式</h3><ol><li>格式一：数据类型 [] 数组名，比如：int [] array（常用）</li><li>格式二：数据类型  数组名 []，比如： int array []</li></ol><h3 id="静态初始化"><a href="#静态初始化" class="headerlink" title="静态初始化"></a>静态初始化</h3><ul><li>完整格式：数据类型[] 数组名 &#x3D; new 数据类型[]{元素1，元素2，元素3，元素4…};</li><li>简化格式: 数据类型[] 数组名 &#x3D; {元素1，元素2，元素3，元素4…};</li></ul><h3 id="地址值"><a href="#地址值" class="headerlink" title="地址值"></a>地址值</h3><p>打印数组的时候，实际出现的是数组的地址值。<br>数组的地址值：就表示数组在内存中的位置。<br>以[I@6d03e736为例：[ ：表示现在打印的是一个数组。I：表示现在打印的数组是int类型的。<br>@：仅仅是一个间隔符号而已。6d03e736：就是数组在内存中真正的地址值。（十六进制的）</p><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ul><li>索引一定是从0开始的。</li><li>连续不间断。</li><li>逐个+1增长。</li></ul><h3 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">    <span class="comment">//在循环的过程中，i依次表示数组中的每一个索引</span></span><br><span class="line">    sout(arr[i]);<span class="comment">//就可以把数组里面的每一个元素都获取出来，并打印在控制台上了。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="数组的动态初始化"><a href="#数组的动态初始化" class="headerlink" title="数组的动态初始化"></a>数组的动态初始化</h3><ul><li>格式：数据类型[] 数组名 &#x3D; new 数据类型[数组的长度];</li><li>数组的默认初始化值：<br>  整数类型：0<br>  小数类型：0.0<br>  布尔类型：false<br>  字符类型：’\u0000’ 空格<br>  引用类型：null</li></ul><h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">数据类型[][] 数组名 = <span class="keyword">new</span> 数据类型[][]&#123;元素<span class="number">1</span>，··&#125;&#123;元素<span class="number">1</span>,··&#125;<span class="comment">//完整静态初始化</span></span><br><span class="line">数据类型[][] 数组名 = &#123;元素<span class="number">1</span>，··&#125;&#123;元素<span class="number">1</span>,··&#125;<span class="comment">//简化静态初始化</span></span><br><span class="line">数据类型[][] 数组名 = <span class="keyword">new</span> 数据类型[m][n](n))可以省略<span class="comment">//动态初始化</span></span><br></pre></td></tr></table></figure><p><img src="/image/Java/6.png" alt="二位数组内存图"></p><h2 id="java内存分配"><a href="#java内存分配" class="headerlink" title="java内存分配"></a>java内存分配</h2><p>jdk8开始取消方法区，新增元空间，把方法区的功能进行拆分，放到堆和元空间中<br><img src="/image/Java/2.png" alt="java内存分配"><br><img src="/image/Java/3.png" alt="java内存分配"><br>两个数组指向同一个空间内存</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">arr1</span> <span class="operator">=</span> &#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">arr1</span> <span class="operator">=</span> arr2; <span class="comment">//把arr2数组地址值赋值给arr1，两者指向同一片内存空间</span></span><br></pre></td></tr></table></figure><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>方法（method）是程序中最小的执行单元</p><h3 id="定义和调用"><a href="#定义和调用" class="headerlink" title="定义和调用"></a>定义和调用</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方法定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> 返回值类型 方法名(<span class="type">int</span> num1, <span class="type">int</span> num2)&#123; <span class="comment">//参数可省略</span></span><br><span class="line">    ...   <span class="comment">//方法体</span></span><br><span class="line"><span class="keyword">return</span> 数据; <span class="comment">//返回值类型为void可省略;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//方法调用,进栈先进后出</span></span><br><span class="line">方法名(参数<span class="number">1</span>,参数<span class="number">2</span>);</span><br><span class="line">数据类型 变量名 = 方法名 ( 参数 ) ;</span><br></pre></td></tr></table></figure><ul><li>方法不能嵌套定义</li><li>可以单独的书写return，后面不加数据,表示终止方法体执行</li></ul><h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><p>方法重载指同一个类中定义的多个方法之间的关系，满足下列条件的多个方法相互构成重载</p><ul><li>多个方法在同一个类中</li><li>多个方法具有相同的方法名</li><li>多个方法的参数不相同，类型不同或者数量不同</li></ul><p>重载仅针对同一个类中方法的名称与参数进行识别，与返回值无关，换句话说不能通过返回值来判定两个方法是否相互构成重载</p><h3 id="方法值的传递"><a href="#方法值的传递" class="headerlink" title="方法值的传递"></a>方法值的传递</h3><p>传递基本数据数据类型时，传递的是真实的数据，只是在方法中copy一份，形参的改变不影响实参的值<br><img src="/image/Java/4.png" alt="方法基本数据类型的传递"><br>传递引用数据类型时，传递的是数据的地址值，形参的改变会影响实参的值<br><img src="/image/Java/5.png" alt="方法引用数据类型的传递"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo 配置</title>
       <link href="/2024/08/10/Blog%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
       <url>/2024/08/10/Blog%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
       
@@ -13,14 +63,14 @@
       
       <categories>
           
-          <category> hexo </category>
+          <category> Hexo </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> blog配置 </tag>
+            <tag> Blog </tag>
             
         </tags>
       
@@ -29,7 +79,7 @@
     
     
     <entry>
-      <title>HEXO 搭建</title>
+      <title>Hexo 搭建</title>
       <link href="/2024/08/10/Hexo%E6%90%AD%E5%BB%BA/"/>
       <url>/2024/08/10/Hexo%E6%90%AD%E5%BB%BA/</url>
       
@@ -38,14 +88,14 @@
       
       <categories>
           
-          <category> hexo </category>
+          <category> Hexo </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> blog搭建 </tag>
+            <tag> Blog </tag>
             
         </tags>
       
@@ -54,7 +104,7 @@
     
     
     <entry>
-      <title>Blog 魔改</title>
+      <title>Hexo 魔改</title>
       <link href="/2024/08/10/Blog%E9%AD%94%E6%94%B9/"/>
       <url>/2024/08/10/Blog%E9%AD%94%E6%94%B9/</url>
       
@@ -63,14 +113,14 @@
       
       <categories>
           
-          <category> hexo </category>
+          <category> Hexo </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> blog魔改 </tag>
+            <tag> Blog </tag>
             
         </tags>
       
@@ -79,7 +129,7 @@
     
     
     <entry>
-      <title>Markdown</title>
+      <title>Markdown 基础语法</title>
       <link href="/2024/08/08/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
       <url>/2024/08/08/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
       
@@ -88,7 +138,7 @@
       
       <categories>
           
-          <category> markdown </category>
+          <category> Markdown </category>
           
       </categories>
       
