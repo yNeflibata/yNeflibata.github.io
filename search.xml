@@ -29,25 +29,6 @@
     
     
     <entry>
-      <title>Probability theory与Mathematical statistics</title>
-      <link href="/2024/09/11/Probability%20theory%E4%B8%8EMathematical%20statistics/"/>
-      <url>/2024/09/11/Probability%20theory%E4%B8%8EMathematical%20statistics/</url>
-      
-        <content type="html"><![CDATA[<h1 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>样本空间$(\Omega)$与事件的集合表示</li><li>事件之间的关系</li><li>概率(<strong>P</strong>)的初等描述</li></ul><h2 id="概型"><a href="#概型" class="headerlink" title="概型"></a>概型</h2><h3 id="古典概型"><a href="#古典概型" class="headerlink" title="古典概型"></a>古典概型</h3><ul><li>有限个样点，互不相容</li><li>等可能性</li><li>排列组合<ol><li>不重复排列：从n个不同的元素中取出m个不同排列种数<br>  $$<br>  P_n^m&#x3D;n(n-1)(n-2)\cdots(n-m+1)&#x3D;\cfrac{n!}{(n-m)!}<br>  $$</li><li>重复排列：从n个不同的元素中取出m个不同排列种数<br>  $$<br>  P_n^m&#x3D;n\times n\cdots \times n&#x3D;n^m<br>  $$</li><li>组合：从n个不同的元素中取出m个不同元素种数<br>  $$<br>  C_n^m&#x3D;\cfrac{P_n^m}{m!}&#x3D;\cfrac{n!}{m!(n-m)!}<br>  $$</li></ol></li></ul><h3 id="几何概型"><a href="#几何概型" class="headerlink" title="几何概型"></a>几何概型</h3><ul><li>线段、平面、立体</li><li>$P(A)&#x3D;\cfrac{\mu (G)}{\mu (\Omega)}$</li></ul><h3 id="频率与概率"><a href="#频率与概率" class="headerlink" title="频率与概率"></a>频率与概率</h3><p>$$<br>W_n(A)\to P(A)<br>$$</p><h2 id="公理化"><a href="#公理化" class="headerlink" title="公理化"></a>公理化</h2><h2 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h2><p>在B发生的前提下B发生的概率$P(A|B)$，其样本空间为B<br>$$<br>P(A|B)&#x3D;\cfrac{P(AB)}{P(B)}<br>$$</p><h4 id="乘法公式"><a href="#乘法公式" class="headerlink" title="乘法公式"></a>乘法公式</h4><p>$$<br>P(A_1A_2\cdots A_n)&#x3D;P(A_1)P(A_2|A_1)P(A_3|A_1A_2)\cdots P(A_n|A_1 \cdots A_{n-1})<br>$$</p><h4 id="全概率公式"><a href="#全概率公式" class="headerlink" title="全概率公式"></a>全概率公式</h4><p>$A_i$各个互不相容，总体包含事件$B$</p><p>$$<br>P(B)&#x3D;\sum_{i&#x3D;1}^nP(A_i)P(B|A_i)<br>$$</p><h4 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h4><p>$A_i$事件  各个互不相容，$\sum_{i&#x3D;1}A_i$包含事件$B$，$A_k$是$B$与$A_i$的交集，$i&#x3D;k$</p><p>$$<br>P(A_k|B)&#x3D;\cfrac{P(A_k)P(B|A_k)}{\sum_{i&#x3D;1}^nP(A_i)P(B|A_i)}&#x3D;\cfrac{P(A_kB)}{P(B)}<br>$$</p><h2 id="事件的独立性"><a href="#事件的独立性" class="headerlink" title="事件的独立性"></a>事件的独立性</h2><p>$A$的概率不 受$B$发生的影响:$P(A|B)&#x3D;P(A)$，则$A$、$B$互相独立：$P(AB)&#x3D;P(A)P(B)$</p><h4 id="伯努利模型"><a href="#伯努利模型" class="headerlink" title="伯努利模型"></a>伯努利模型</h4><ul><li>独立实验序列：$E_n$，n个互相独立的事件</li><li>$n$重独立实验序列：$E_n$，n个重复的独立事件</li><li>伯努利试验：实验结果只有两种，如扔硬币</li><li>$n$重伯努利试验：$n$次独立、重复、结果两种的试验</li></ul><h5 id="二项概率公式"><a href="#二项概率公式" class="headerlink" title="二项概率公式"></a>二项概率公式</h5><p>$A$发生的概率为$P$，$A$不发生的概率为$1-P$，则$n$重伯努利试验中$A$发生$k$次的概率为:<br>$$<br>P_n(k)&#x3D;C_n^kP^k(1-P)^{n-k}<br>$$</p><h2 id="随机变量"><a href="#随机变量" class="headerlink" title="随机变量"></a>随机变量</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 数理 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>LateX公式</title>
       <link href="/2024/09/10/LateX%E5%85%AC%E5%BC%8F/"/>
       <url>/2024/09/10/LateX%E5%85%AC%E5%BC%8F/</url>
